@@ -13,10 +13,22 @@
 		<ClCompile Include="src\ofApp.cpp">
 			<Filter>src</Filter>
 		</ClCompile>
+		<ClCompile Include="..\..\..\..\..\..\Program Files\of_v0.10.1_vs2017_release\addons\ofxMSAInteractiveObject\src\ofxMSAInteractiveObject.cpp">
+			<Filter>addons\ofxMSAInteractiveObject\src</Filter>
+		</ClCompile>
 	</ItemGroup>
 	<ItemGroup>
 		<Filter Include="src">
 			<UniqueIdentifier>{d8376475-7454-4a24-b08a-aac121d3ad6f}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons">
+			<UniqueIdentifier>{71834F65-F3A9-211E-73B8-DC85}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxMSAInteractiveObject">
+			<UniqueIdentifier>{7F7A88A6-F023-28F9-9A1E-C773}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxMSAInteractiveObject\src">
+			<UniqueIdentifier>{267164F9-41DE-EEA9-6F4A-21A9}</UniqueIdentifier>
 		</Filter>
 	</ItemGroup>
 	<ItemGroup>
@@ -25,6 +37,9 @@
 		</ClInclude>
 		<ClInclude Include="src\ofApp.h">
 			<Filter>src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\Program Files\of_v0.10.1_vs2017_release\addons\ofxMSAInteractiveObject\src\ofxMSAInteractiveObject.h">
+			<Filter>addons\ofxMSAInteractiveObject\src</Filter>
 		</ClInclude>
 	</ItemGroup>
 	<ItemGroup>
