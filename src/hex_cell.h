@@ -21,6 +21,10 @@ public:
     vector<ofVec3f> GetVertices();
     ofVec3f GetUpperRightVertex();
     ofVec3f GetLowerRightVertex();
+    ofVec3f GetUpperLeftVertex();
+    ofVec3f GetLowerLeftVertex();
+    ofVec3f GetRightVertex();
+    ofVec3f GetLeftVertex();
 
    private:
     ofVec3f center_;
