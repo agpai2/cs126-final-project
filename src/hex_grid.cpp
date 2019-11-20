@@ -53,6 +53,10 @@ void HexGrid::setup() {
         right_half[i].pop_back();
         cells_.insert(cells_.end(), right_half[i].begin(), right_half[i].end());
     }
+
+	for (HexCell& cell : cells_) {
+        cell.setup();
+	}
 }
 
 void HexGrid::update() {}
