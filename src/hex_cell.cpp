@@ -64,8 +64,9 @@ void HexCell::draw() {
     }
     hexagon_outline.close();
     hexagon_outline.draw();
+
+	ofDrawBitmapString(to_string(atoms_), center_);
 }
 
-void HexCell::onPress(int x, int y, int button) {
-
+void HexCell::onPress(int x, int y, int button) { 
 }
