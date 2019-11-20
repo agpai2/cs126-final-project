@@ -26,7 +26,7 @@ public:
     ofVec3f GetRightVertex();
     ofVec3f GetLeftVertex();
 
-   private:
+ private:
     ofVec3f center_;
     ofVec3f right_vertex_;
     ofVec3f upper_right_vertex_;
@@ -34,4 +34,6 @@ public:
     ofVec3f left_vertex_;
     ofVec3f lower_left_vertex_;
     ofVec3f lower_right_vertex_;
+
+	size_t atoms_ = 0;
 };
