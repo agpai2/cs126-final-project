@@ -2,8 +2,10 @@
 #include "hex_cell.h"
 
 TEST_CASE("Test HexCell constructor creates correct vertices in a hexagon") {
-    vector<ofVec3f> expected_vertices = {{40, 20}, {30, 37.32}, {10, 37.32},
-                                         {0, 20},  {10, 2.68}, {30, 2.68}};
+    vector<ofVec3f> expected_vertices = {
+		{40, 20}, {30, 2.68}, {10, 2.68}, 
+        {0, 20}, {10, 37.32}, {30, 37.32}
+	};
     
 	HexCell cell(ofVec3f(20, 20, 0));
 	vector<ofVec3f> vertices = cell.GetVertices();

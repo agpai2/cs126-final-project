@@ -11,7 +11,7 @@ HexCell::HexCell(ofVec3f center) : center_(center) {
         float y = center_.y + kHexCellRadius * sin(cumulative_angle);
         *vertex_ptr = ofVec3f(x, y, 0);
 
-        cumulative_angle += kHexCellAngleRad;
+        cumulative_angle -= kHexCellAngleRad;
     }
 }
 
