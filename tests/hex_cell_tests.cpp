@@ -3,11 +3,11 @@
 
 TEST_CASE("Test HexCell constructor creates correct vertices in a hexagon") {
     vector<ofVec3f> expected_vertices = {
-		{40, 20}, {30, 2.68}, {10, 2.68}, 
-        {0, 20}, {10, 37.32}, {30, 37.32}
+		{80, 40}, {60, 5.36}, {20, 5.36}, 
+        {0, 40}, {20, 74.64}, {60, 74.64}
 	};
     
-	HexCell cell(ofVec3f(20, 20, 0));
+	HexCell cell(ofVec3f(40, 40, 0));
 	vector<ofVec3f> vertices = cell.GetVertices();
     REQUIRE(vertices.size() == 6);
     
