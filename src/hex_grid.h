@@ -19,4 +19,5 @@ public:
 private:
     ofVec3f center_;
     vector<HexCell> cells_;
+    void SetupCellNeighbors();
 };

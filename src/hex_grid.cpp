@@ -15,8 +15,7 @@ void HexGrid::setup() {
     vector<HexCell> middle_column;
     for (int i = 0; i < kGridSize; i++) {
         ofVec3f cell_center(center_.x, top_cell_center_y + kHexCellHeight * i);
-        printf("%f\n", cell_center.y);
-		middle_column.emplace_back(HexCell(cell_center));
+        middle_column.emplace_back(HexCell(cell_center));
     }
 
     // Generate left half of grid
@@ -34,8 +33,8 @@ void HexGrid::setup() {
         left_half[i].pop_back();
         cells_.insert(cells_.end(), left_half[i].begin(), left_half[i].end());
     }
-	
-	reverse(cells_.begin(), cells_.end());
+
+    reverse(cells_.begin(), cells_.end());
     cells_.insert(cells_.end(), middle_column.begin(), middle_column.end());
 
     // Generate right half of grid
@@ -54,9 +53,10 @@ void HexGrid::setup() {
         cells_.insert(cells_.end(), right_half[i].begin(), right_half[i].end());
     }
 
-	for (HexCell& cell : cells_) {
+    for (HexCell& cell : cells_) {
         cell.setup();
-	}
+    }
+    SetupCellNeighbors();
 }
 
 void HexGrid::update() {}
@@ -68,3 +68,18 @@ void HexGrid::draw() {
 }
 
 void HexGrid::exit() {}
+
+void HexGrid::SetupCellNeighbors() { 
+	// Not an efficient way to add neighbors, but this function is only run once
+	for (HexCell& cell : cells_) {
+        ofVec3f cell_center = cell.GetCenter();
+        for (HexCell& other_cell : cells_) {
+            ofVec3f other_cell_center = other_cell.GetCenter();
+            if (cell_center == other_cell_center) continue;
+
+			if (cell_center.distance(other_cell_center) < kHexCellDiameter) {
+                cell.AddNeighbor(&other_cell);
+			}
+		}
+	}
+}
