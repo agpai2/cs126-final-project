@@ -24,6 +24,8 @@ vector<ofVec3f> HexCell::GetVertices() {
                             lower_left_vertex_, lower_right_vertex_});
 }
 
+ofVec3f HexCell::GetCenter() { return center_;  }
+
 ofVec3f HexCell::GetUpperRightVertex() { return upper_right_vertex_; }
 
 ofVec3f HexCell::GetLowerRightVertex() { return lower_right_vertex_; }
@@ -60,4 +62,12 @@ void HexCell::draw() {
 
 void HexCell::onPress(int x, int y, int button) {
     ++atoms_;
+}
+
+vector<HexCell*> HexCell::GetNeighbors() { 
+	return neighbor_cells_; 
+}
+
+void HexCell::AddNeighbor(HexCell* neighbor) { 
+	neighbor_cells_.push_back(neighbor);
 }

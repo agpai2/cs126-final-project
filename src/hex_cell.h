@@ -5,6 +5,7 @@
 
 constexpr float kPi = 3.14159266;
 constexpr float kHexCellRadius = 40.0;
+constexpr float kHexCellDiameter = kHexCellRadius * 2;
 constexpr float kHexCellAngleDeg = 60.0;
 constexpr float kHexCellAngleRad = kPi / 3.0;
 
@@ -19,12 +20,16 @@ public:
 
     HexCell(ofVec3f center);
     vector<ofVec3f> GetVertices();
+    ofVec3f GetCenter();
     ofVec3f GetUpperRightVertex();
     ofVec3f GetLowerRightVertex();
     ofVec3f GetUpperLeftVertex();
     ofVec3f GetLowerLeftVertex();
     ofVec3f GetRightVertex();
     ofVec3f GetLeftVertex();
+
+	vector<HexCell*> GetNeighbors();
+	void AddNeighbor(HexCell* neighbor);
 
  private:
     ofVec3f center_;
@@ -36,4 +41,5 @@ public:
     ofVec3f lower_right_vertex_;
 
 	size_t atoms_ = 0;
+	vector<HexCell*> neighbor_cells_;
 };
