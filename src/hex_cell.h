@@ -2,8 +2,10 @@
 
 #include "ofMain.h"
 
+constexpr float kPi = 3.14159266;
 constexpr float kHexCellRadius = 20.0;
 constexpr float kHexCellAngleDeg = 60.0;
+constexpr float kHexCellAngleRad = kPi / 3.0;
 
 class HexCell {
    public:
