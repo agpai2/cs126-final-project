@@ -13,6 +13,9 @@ HexCell::HexCell(ofVec3f center) : center_(center) {
 
         cumulative_angle -= kHexCellAngleRad;
     }
+
+    set(center_.x - kHexCellRadius / 2, center_.y - kHexCellRadius / 2,
+        kHexCellRadius, kHexCellRadius);
 }
 
 vector<ofVec3f> HexCell::GetVertices() {
@@ -21,30 +24,17 @@ vector<ofVec3f> HexCell::GetVertices() {
                             lower_left_vertex_, lower_right_vertex_});
 }
 
-ofVec3f HexCell::GetUpperRightVertex() { 
-	return upper_right_vertex_; 
-}
+ofVec3f HexCell::GetUpperRightVertex() { return upper_right_vertex_; }
 
-ofVec3f HexCell::GetLowerRightVertex() { 
-	return lower_right_vertex_; 
-}
+ofVec3f HexCell::GetLowerRightVertex() { return lower_right_vertex_; }
 
-ofVec3f HexCell::GetUpperLeftVertex() { 
-	return upper_left_vertex_; 
-}
+ofVec3f HexCell::GetUpperLeftVertex() { return upper_left_vertex_; }
 
-ofVec3f HexCell::GetLowerLeftVertex() {
-	return lower_left_vertex_; 
-}
+ofVec3f HexCell::GetLowerLeftVertex() { return lower_left_vertex_; }
 
-ofVec3f HexCell::GetRightVertex() { 
-	return right_vertex_; 
-}
+ofVec3f HexCell::GetRightVertex() { return right_vertex_; }
 
-ofVec3f HexCell::GetLeftVertex() { 
-	return left_vertex_; 
-}
-
+ofVec3f HexCell::GetLeftVertex() { return left_vertex_; }
 
 void HexCell::setup() {
     set(center_.x - kHexCellRadius / 2.0, center_.y - kHexCellRadius / 2.0,
@@ -65,8 +55,9 @@ void HexCell::draw() {
     hexagon_outline.close();
     hexagon_outline.draw();
 
-	ofDrawBitmapString(to_string(atoms_), center_);
+    ofDrawBitmapString(to_string(atoms_), center_);
 }
 
-void HexCell::onPress(int x, int y, int button) { 
+void HexCell::onPress(int x, int y, int button) {
+    ++atoms_;
 }
