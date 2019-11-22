@@ -1,6 +1,8 @@
 #include "catch.hpp"
 #include "hex_cell.h"
 
+using Hexplosions::HexCell;
+
 TEST_CASE("Test HexCell constructor creates correct vertices in a hexagon") {
     vector<ofVec3f> expected_vertices = {
 		{80, 40}, {60, 5.36}, {20, 5.36}, 
