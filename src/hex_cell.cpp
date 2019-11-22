@@ -65,11 +65,11 @@ void HexCell::onPress(int x, int y, int button) {
     ++atoms_;
 }
 
-vector<HexCell*> HexCell::GetNeighbors() { 
+vector<HexCell*>& HexCell::GetNeighbors() { 
 	return neighbor_cells_; 
 }
 
-void HexCell::AddNeighbor(HexCell* neighbor) { 
-	neighbor_cells_.push_back(neighbor);
+void HexCell::AddNeighbor(HexCell &neighbor) { 
+	neighbor_cells_.push_back(&neighbor);
 }
 } // namespace Hexplosions

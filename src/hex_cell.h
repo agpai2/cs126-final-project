@@ -29,8 +29,8 @@ public:
     ofVec3f GetRightVertex();
     ofVec3f GetLeftVertex();
 
-	vector<HexCell*> GetNeighbors();
-	void AddNeighbor(HexCell* neighbor);
+	vector<HexCell*>& GetNeighbors();
+	void AddNeighbor(HexCell &neighbor);
 
  private:
     ofVec3f center_;

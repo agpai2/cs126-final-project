@@ -79,7 +79,7 @@ void HexGrid::SetupCellNeighbors() {
             if (cell_center == other_cell_center) continue;
 
 			if (cell_center.distance(other_cell_center) < kHexCellDiameter) {
-                cell.AddNeighbor(&other_cell);
+                cell.AddNeighbor(other_cell);
 			}
 		}
 	}
