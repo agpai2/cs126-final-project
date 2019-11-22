@@ -1,5 +1,6 @@
 #include "hex_cell.h"
 
+namespace Hexplosions {
 HexCell::HexCell(ofVec3f center) : center_(center) {
     float cumulative_angle = 0;
     vector<ofVec3f*> vertex_ptrs = {&right_vertex_,      &upper_right_vertex_,
@@ -71,3 +72,4 @@ vector<HexCell*> HexCell::GetNeighbors() {
 void HexCell::AddNeighbor(HexCell* neighbor) { 
 	neighbor_cells_.push_back(neighbor);
 }
+} // namespace Hexplosions

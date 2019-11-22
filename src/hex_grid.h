@@ -3,6 +3,7 @@
 #include "ofMain.h"
 #include "hex_cell.h"
 
+namespace Hexplosions {
 const size_t kGridSize = 5;
 
 class HexGrid {
@@ -21,3 +22,4 @@ private:
     vector<HexCell> cells_;
     void SetupCellNeighbors();
 };
+} // namespace Hexplosions

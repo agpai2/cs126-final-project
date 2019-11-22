@@ -3,6 +3,7 @@
 #include "ofMain.h"
 #include "ofxMSAInteractiveObject.h"
 
+namespace Hexplosions {
 constexpr float kPi = 3.14159266;
 constexpr float kHexCellRadius = 40.0;
 constexpr float kHexCellDiameter = kHexCellRadius * 2;
@@ -43,3 +44,4 @@ public:
 	size_t atoms_ = 0;
 	vector<HexCell*> neighbor_cells_;
 };
+} // namespace Hexplosions

@@ -1,5 +1,6 @@
 #include "hex_grid.h"
 
+namespace Hexplosions {
 HexGrid::HexGrid() : HexGrid(ofVec3f(0, 0)) {}
 
 HexGrid::HexGrid(ofVec3f center) : center_(center) {}
@@ -83,3 +84,4 @@ void HexGrid::SetupCellNeighbors() {
 		}
 	}
 }
+} // namespace Hexplosions
