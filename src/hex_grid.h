@@ -6,6 +6,19 @@
 namespace Hexplosions {
 const size_t kGridSize = 5;
 
+/**
+ * @class   HexGrid
+ *
+ * @brief   A container for multiple cells (HexCell) which form a grid.
+ * @details This class sets up individual cells by calculating the location of each cell.
+ *          This class also populates the neighbors of each cell.
+ *          This class does not have any graphical or interactive functionality.
+ *          
+ * @see     HexCell
+ *
+ * @author  Estelle Lee
+ * @date    1/12/2019
+ */
 class HexGrid {
   public:
     HexGrid();
