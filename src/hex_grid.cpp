@@ -5,7 +5,9 @@ HexGrid::HexGrid() : HexGrid(ofVec3f(0, 0)) {}
 
 HexGrid::HexGrid(ofVec3f center) : center_(center) {}
 
-vector<HexCell> HexGrid::GetCells() { return cells_; }
+vector<HexCell> HexGrid::GetCells() { 
+    return cells_; 
+}
 
 void HexGrid::setup() {
     vector<HexCell> middle_column = CreateGridMiddleColumn();

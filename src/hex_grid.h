@@ -7,7 +7,7 @@ namespace Hexplosions {
 const size_t kGridSize = 5;
 
 class HexGrid {
-   public:
+  public:
     HexGrid();
     HexGrid(ofVec3f center);
     vector<HexCell> GetCells();
@@ -17,7 +17,7 @@ class HexGrid {
     void draw();
     void exit();
 
-   private:
+  private:
     ofVec3f center_;
     vector<HexCell> cells_;
 

@@ -6,7 +6,7 @@
 
 namespace Hexplosions {
 class ofApp : public ofBaseApp {
-   public:
+  public:
     void setup();
     void update();
     void draw();
@@ -23,7 +23,7 @@ class ofApp : public ofBaseApp {
     void dragEvent(ofDragInfo dragInfo);
     void gotMessage(ofMessage msg);
 
-   private:
+  private:
     HexGrid grid_;
 };
 } // namespace Hexplosions

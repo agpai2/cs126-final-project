@@ -25,19 +25,33 @@ vector<ofVec3f> HexCell::GetVertices() {
                             lower_left_vertex_, lower_right_vertex_});
 }
 
-ofVec3f HexCell::GetCenter() { return center_;  }
+ofVec3f HexCell::GetCenter() { 
+    return center_; 
+}
 
-ofVec3f HexCell::GetUpperRightVertex() { return upper_right_vertex_; }
+ofVec3f HexCell::GetUpperRightVertex() { 
+    return upper_right_vertex_;
+}
 
-ofVec3f HexCell::GetLowerRightVertex() { return lower_right_vertex_; }
+ofVec3f HexCell::GetLowerRightVertex() {
+    return lower_right_vertex_;
+}
 
-ofVec3f HexCell::GetUpperLeftVertex() { return upper_left_vertex_; }
+ofVec3f HexCell::GetUpperLeftVertex() {
+    return upper_left_vertex_;
+}
 
-ofVec3f HexCell::GetLowerLeftVertex() { return lower_left_vertex_; }
+ofVec3f HexCell::GetLowerLeftVertex() {
+    return lower_left_vertex_;
+}
 
-ofVec3f HexCell::GetRightVertex() { return right_vertex_; }
+ofVec3f HexCell::GetRightVertex() {
+    return right_vertex_;
+}
 
-ofVec3f HexCell::GetLeftVertex() { return left_vertex_; }
+ofVec3f HexCell::GetLeftVertex() {
+    return left_vertex_;
+}
 
 void HexCell::setup() {
     set(center_.x - kHexCellRadius / 2.0, center_.y - kHexCellRadius / 2.0,

@@ -11,7 +11,7 @@ constexpr float kHexCellAngleDeg = 60.0;
 constexpr float kHexCellAngleRad = kPi / 3.0;
 
 class HexCell : public ofxMSAInteractiveObject {
-public:
+  public:
 	// Override methods from base class
     void setup();
     void exit();
@@ -32,7 +32,7 @@ public:
 	vector<HexCell*>& GetNeighbors();
 	void AddNeighbor(HexCell &neighbor);
 
- private:
+  private:
     ofVec3f center_;
     ofVec3f right_vertex_;
     ofVec3f upper_right_vertex_;
