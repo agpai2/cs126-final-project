@@ -53,6 +53,24 @@ ofVec3f HexCell::GetLeftVertex() {
     return left_vertex_;
 }
 
+size_t HexCell::GetAtoms() { 
+    return atoms_;
+}
+
+void HexCell::AddAtom() { 
+    ++atoms_;
+    if (atoms_ >= neighbor_cells_.size()) {
+        atoms_ = 0;
+        ExplodeAtoms();
+    }
+}
+
+void HexCell::ExplodeAtoms() { 
+    for (HexCell* neighbor : neighbor_cells_) {
+        neighbor->AddAtom();
+    }
+}
+
 void HexCell::setup() {
     set(center_.x - kHexCellRadius / 2.0, center_.y - kHexCellRadius / 2.0,
         kHexCellRadius, kHexCellRadius);
@@ -75,8 +93,8 @@ void HexCell::draw() {
     ofDrawBitmapString(to_string(atoms_), center_);
 }
 
-void HexCell::onPress(int x, int y, int button) {
-    ++atoms_;
+void HexCell::onPress(int x, int y, int button) { 
+    AddAtom(); 
 }
 
 vector<HexCell*>& HexCell::GetNeighbors() { 

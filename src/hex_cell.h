@@ -45,6 +45,10 @@ class HexCell : public ofxMSAInteractiveObject {
     ofVec3f GetRightVertex();
     ofVec3f GetLeftVertex();
 
+    size_t GetAtoms();
+    void AddAtom();
+    void ExplodeAtoms();
+
 	vector<HexCell*>& GetNeighbors();
 	void AddNeighbor(HexCell &neighbor);
 
