@@ -2,17 +2,26 @@
 
 namespace Hexplosions {
 //--------------------------------------------------------------
-void ofApp::setup() {
-    ofVec3f screen_center(ofGetWindowWidth() / 2, ofGetWindowHeight() / 2);
-    grid_ = HexGrid(screen_center);
-    grid_.setup();
+void ofApp::setup() { 
+    SetupDisplayStateIntroduction();
 }
 
 //--------------------------------------------------------------
 void ofApp::update() {}
 
 //--------------------------------------------------------------
-void ofApp::draw() { grid_.draw(); }
+void ofApp::draw() {
+    switch (display_state_) {
+        case GameDisplayState::INTRODUCTION:
+            intro_display_.draw();
+            break;
+        case GameDisplayState::GAME:
+            grid_.draw(); 
+            break;
+        case GameDisplayState::END:
+            break;
+    }
+}
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key) {}
@@ -43,6 +52,24 @@ void ofApp::windowResized(int w, int h) {}
 
 //--------------------------------------------------------------
 void ofApp::gotMessage(ofMessage msg) {}
+
+void ofApp::SetupDisplayStateIntroduction() {
+    display_state_ = GameDisplayState::INTRODUCTION;
+    intro_display_.setup();
+    intro_display_.start_.addListener(this, &ofApp::SetupDisplayStateGame);
+}
+
+void ofApp::SetupDisplayStateGame() {
+    display_state_ = GameDisplayState::GAME;
+    settings_ = intro_display_.GetSettings();
+    intro_display_.exit();
+
+    ofVec3f screen_center(ofGetWindowWidth() / 2, ofGetWindowHeight() / 2);
+    grid_ = HexGrid(screen_center, settings_.GetGridSize());
+    grid_.setup();
+}
+
+void ofApp::SetupDisplayStateEnd() {}
 
 //--------------------------------------------------------------
 void ofApp::dragEvent(ofDragInfo dragInfo) {}
