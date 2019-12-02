@@ -26,10 +26,17 @@ class IntroductionDisplay {
     GameSettings GetSettings();
 
   private:
+    void SelectSmallGrid(bool &is_small_grid);
+    void SelectMediumGrid(bool &is_medium_grid);
+    void SelectLargeGrid(bool &is_large_grid);
+
     ofParameter<size_t> num_players_param_;
-    ofxButton small_grid_button_;
-    ofxButton medium_grid_button_;
-    ofxButton large_grid_button_;
+    ofParameter<GameGridSize> grid_size_param_;
+    ofParameter<bool> small_grid_param_;
+    ofParameter<bool> medium_grid_param_;
+    ofParameter<bool> large_grid_param_;
     ofxPanel gui;
+
+    GameGridSize grid_size_;
 };
 }  // namespace Hexplosions
