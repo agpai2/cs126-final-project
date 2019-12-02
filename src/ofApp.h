@@ -3,10 +3,32 @@
 #include "ofMain.h"
 
 #include "hex_grid.h"
+#include "introduction_display.h"
 
 namespace Hexplosions {
+
+/**
+ * @enum    GameDisplayState
+ *
+ * @brief   Values that represent the display screens
+ */
+enum GameDisplayState {
+    INTRODUCTION,
+    GAME,
+    END
+};
+
+/**
+ * @class   ofApp
+ *
+ * @brief   Main application that controls the various game screens
+ *
+ * @author  Estelle Lee
+ * @date    1/12/2019
+ */
+
 class ofApp : public ofBaseApp {
-  public:
+   public:
     void setup();
     void update();
     void draw();
@@ -23,7 +45,15 @@ class ofApp : public ofBaseApp {
     void dragEvent(ofDragInfo dragInfo);
     void gotMessage(ofMessage msg);
 
-  private:
+   private:
+    GameDisplayState display_state_;
+    void SetupDisplayStateIntroduction();
+    void SetupDisplayStateGame();
+    void SetupDisplayStateEnd();
+    
+    IntroductionDisplay intro_display_;
+    GameSettings settings_;
+
     HexGrid grid_;
 };
-} // namespace Hexplosions
+}  // namespace Hexplosions
