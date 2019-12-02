@@ -27,6 +27,7 @@ constexpr size_t kMaximumPlayers = 4;
 
 class GameSettings {
   public:
+    GameSettings();
     GameSettings(GameGridSize grid_size, size_t num_players);
     size_t GetGridSize();
     size_t GetNumPlayers();

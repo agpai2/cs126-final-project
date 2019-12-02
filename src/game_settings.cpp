@@ -1,6 +1,9 @@
 #include "game_settings.h"
         
 namespace Hexplosions {
+GameSettings::GameSettings() : 
+    grid_size_(GameGridSize::SMALL), num_players_(kMinimumPlayers) {}
+
 GameSettings::GameSettings(GameGridSize grid_size, size_t num_players) : 
     grid_size_(grid_size), num_players_(num_players) {}
 
