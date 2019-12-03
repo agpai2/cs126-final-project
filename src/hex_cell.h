@@ -1,5 +1,6 @@
 #pragma once
 
+#include "game_settings.h"
 #include "ofMain.h"
 #include "ofxMSAInteractiveObject.h"
 
@@ -15,20 +16,21 @@ constexpr float kHexCellAngleRad = kPi / 3.0;
  *
  * @brief   A hexagonal grid cell that is displayed on-screen and interactive.
  * @details The class provides the following functionality:
- *          1. Draw hexagon on screen  
- *          2. Draw number of atoms (simple game entity) in cell  
- *          3. Allow user to click on cell, which increases number of atoms in cell  
- *          4. Controls explosion behavior (game mechanic) which is triggered when   
- *             number of atoms exceeds threshold
+ *          1. Draw hexagon on screen
+ *          2. Draw number of atoms (simple game entity) in cell
+ *          3. Allow user to click on cell, which increases number of atoms in
+ * cell
+ *          4. Controls explosion behavior (game mechanic) which is triggered
+ * when number of atoms exceeds threshold
  *
  * @author  Estelle Lee
  * @date    1/12/2019
  */
 class HexCell : public ofxMSAInteractiveObject {
-  public:
+   public:
     HexCell(ofVec3f center);
 
-	// Override methods from base class
+    // Override methods from base class
     void setup();
     void exit();
     void update();
@@ -46,13 +48,13 @@ class HexCell : public ofxMSAInteractiveObject {
     ofVec3f GetLeftVertex();
 
     size_t GetAtoms();
-    void AddAtom();
+    void AddAtom(size_t player_id);
     void ExplodeAtoms();
 
-	vector<HexCell*>& GetNeighbors();
-	void AddNeighbor(HexCell &neighbor);
+    vector<HexCell*>& GetNeighbors();
+    void AddNeighbor(HexCell& neighbor);
 
-  private:
+   private:
     // Vertices of the hexagon on screen
     ofVec3f center_;
     ofVec3f right_vertex_;
@@ -62,7 +64,10 @@ class HexCell : public ofxMSAInteractiveObject {
     ofVec3f lower_left_vertex_;
     ofVec3f lower_right_vertex_;
 
-	size_t atoms_ = 0;
-	vector<HexCell*> neighbor_cells_;
+    size_t atoms_ = 0;
+    vector<HexCell*> neighbor_cells_;
+
+    bool is_occupied_ = false;
+    size_t player_id_;
 };
-} // namespace Hexplosions
+}  // namespace Hexplosions
