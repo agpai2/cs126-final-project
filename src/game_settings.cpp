@@ -7,11 +7,11 @@ GameSettings::GameSettings() :
 GameSettings::GameSettings(GameGridSize grid_size, size_t num_players) : 
     grid_size_(grid_size), num_players_(num_players) {}
 
-size_t GameSettings::GetGridSize() { 
+size_t GameSettings::GetGridSize() const { 
     return grid_size_;
 }
 
-size_t GameSettings::GetNumPlayers() {
+size_t GameSettings::GetNumPlayers() const {
     return num_players_;
 }
 }  // namespace Hexplosions
