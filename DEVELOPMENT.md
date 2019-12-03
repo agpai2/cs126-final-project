@@ -4,8 +4,13 @@
 - Tracked and displayed number of atoms in individual cell
 - Added listener to mouse clicks which increment number of atoms in a cell
 
+### 12/1
+- Added explosion game mechanic
+    - Tracked cell's neighbors
+    - Distributed atoms to neighbors on reaching capacity
+    - Checked neighbors' explosion condition (and recursively called explode if condition is met)
+- Added introduction screen for user to choose game settings
+- Linked introduction screen to main game screen
+
 # Issues / TODO
-### 11/20
-- ofxMSAInteractive object is a rectangle (but I need a hexagon), current workaround is to have a clickable rectanglular area in the middle of the cell
-- String displaying number of atoms is not centered in cell
-- HexGrid::setup() is too long
+See Github Issues. 
