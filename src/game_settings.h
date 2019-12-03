@@ -3,6 +3,9 @@
 #include "ofMain.h"
 
 namespace Hexplosions {
+constexpr size_t kWindowWidth = 1280;
+constexpr size_t kWindowHeight = 900;
+
 /**
  * @enum    GameGridSize
  *
@@ -28,8 +31,8 @@ class GameSettings {
    public:
     GameSettings();
     GameSettings(GameGridSize grid_size, size_t num_players);
-    size_t GetGridSize();
-    size_t GetNumPlayers();
+    size_t GetGridSize() const;
+    size_t GetNumPlayers() const;
 
    private:
     GameGridSize grid_size_;
