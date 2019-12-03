@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 
+#include "game_engine.h"
 #include "hex_grid.h"
 #include "introduction_display.h"
 
@@ -12,11 +13,7 @@ namespace Hexplosions {
  *
  * @brief   Values that represent the display screens
  */
-enum GameDisplayState {
-    INTRODUCTION,
-    GAME,
-    END
-};
+enum GameDisplayState { INTRODUCTION, GAME, END };
 
 /**
  * @class   ofApp
@@ -50,10 +47,9 @@ class ofApp : public ofBaseApp {
     void SetupDisplayStateIntroduction();
     void SetupDisplayStateGame();
     void SetupDisplayStateEnd();
-    
-    IntroductionDisplay intro_display_;
-    GameSettings settings_;
 
-    HexGrid grid_;
+    IntroductionDisplay intro_display_;
+    GameEngine engine_;
+    HexGrid hex_grid_;
 };
 }  // namespace Hexplosions

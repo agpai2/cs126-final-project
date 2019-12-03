@@ -16,7 +16,7 @@ void ofApp::draw() {
             intro_display_.draw();
             break;
         case GameDisplayState::GAME:
-            grid_.draw(); 
+            hex_grid_.draw(); 
             break;
         case GameDisplayState::END:
             break;
@@ -61,12 +61,14 @@ void ofApp::SetupDisplayStateIntroduction() {
 
 void ofApp::SetupDisplayStateGame() {
     display_state_ = GameDisplayState::GAME;
-    settings_ = intro_display_.GetSettings();
+    engine_ = GameEngine(intro_display_.GetSettings());
     intro_display_.exit();
+    
+    ofVec3f center(kWindowWidth / 2, kWindowHeight / 2, 0);
+    hex_grid_ = HexGrid(center, engine_.GetGridSize());
+    hex_grid_.setup();
 
-    ofVec3f screen_center(ofGetWindowWidth() / 2, ofGetWindowHeight() / 2);
-    grid_ = HexGrid(screen_center, settings_.GetGridSize());
-    grid_.setup();
+    engine_.SetHexGrid(hex_grid_);
 }
 
 void ofApp::SetupDisplayStateEnd() {}
