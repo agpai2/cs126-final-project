@@ -1,5 +1,6 @@
 #pragma once
 
+#include "game_engine.h"
 #include "game_settings.h"
 #include "ofMain.h"
 #include "ofxMSAInteractiveObject.h"
@@ -28,7 +29,7 @@ constexpr float kHexCellAngleRad = kPi / 3.0;
  */
 class HexCell : public ofxMSAInteractiveObject {
    public:
-    HexCell(ofVec3f center);
+    HexCell(ofVec3f center, GameEngine* engine_ptr);
 
     // Override methods from base class
     void setup();
@@ -69,5 +70,6 @@ class HexCell : public ofxMSAInteractiveObject {
 
     bool is_occupied_ = false;
     size_t player_id_;
+    GameEngine* engine_ptr_;
 };
 }  // namespace Hexplosions
