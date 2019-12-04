@@ -24,9 +24,9 @@ ofColor GetPlayerColor(size_t player_id) {
         case 2:
             return ofColor::blue;
         case 3:
-            return ofColor::black;
-        default:
             return ofColor::white;
+        default:
+            return ofColor::black;
     }
 }
 }  // namespace Hexplosions

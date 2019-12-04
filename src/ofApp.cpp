@@ -3,6 +3,7 @@
 namespace Hexplosions {
 //--------------------------------------------------------------
 void ofApp::setup() { 
+    ofSetBackgroundColor(ofColor::black);
     SetupDisplayStateIntroduction();
 }
 
@@ -65,10 +66,8 @@ void ofApp::SetupDisplayStateGame() {
     intro_display_.exit();
     
     ofVec3f center(kWindowWidth / 2, kWindowHeight / 2, 0);
-    hex_grid_ = HexGrid(center, engine_.GetGridSize());
+    hex_grid_ = HexGrid(center, engine_.GetGridSize(), engine_);
     hex_grid_.setup();
-
-    engine_.SetHexGrid(hex_grid_);
 }
 
 void ofApp::SetupDisplayStateEnd() {}
