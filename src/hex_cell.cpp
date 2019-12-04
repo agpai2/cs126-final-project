@@ -42,10 +42,17 @@ ofVec3f HexCell::GetLeftVertex() { return left_vertex_; }
 
 size_t HexCell::GetAtoms() { return atoms_; }
 
-void HexCell::AddAtom(size_t player_id) {
-    player_id_ = player_id;
+void HexCell::AddAtom(size_t curr_player_id) {
+    if (is_occupied_ && curr_player_id != player_id_) {
+        engine_ptr_->TransferCell(player_id_, curr_player_id);
+    } else if (!is_occupied_) {
+        engine_ptr_->MarkCellOccupied(curr_player_id);
+    }
+
+    player_id_ = curr_player_id;
     is_occupied_ = true;
     ++atoms_;
+
     if (atoms_ >= neighbor_cells_.size()) {
         ExplodeAtoms();
     }
@@ -54,6 +61,8 @@ void HexCell::AddAtom(size_t player_id) {
 void HexCell::ExplodeAtoms() {
     atoms_ = 0;
     is_occupied_ = false;
+    engine_ptr_->MarkCellUnoccupied(player_id_);
+
     for (HexCell* neighbor : neighbor_cells_) {
         neighbor->AddAtom(player_id_);
     }
