@@ -2,9 +2,9 @@
 
 #include "ofMain.h"
 #include "game_settings.h"
-#include "hex_grid.h"
 
 namespace Hexplosions {
+class HexGrid;
 
 /**
  * @class   GameEngine
