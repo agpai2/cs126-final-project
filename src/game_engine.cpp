@@ -10,6 +10,8 @@ GameEngine::GameEngine(const GameSettings &settings) :
     }
     current_player_iter = active_player_ids_.begin();
     current_player_ = *current_player_iter;
+
+    num_occupied_cells_.assign(settings_.GetNumPlayers(), 0);
 }
 
 size_t GameEngine::GetGridSize() const { 
@@ -21,7 +23,21 @@ size_t GameEngine::GetNumPlayers() const {
 }
 
 size_t GameEngine::GetCurrentPlayerId() const { 
-    return current_player_;
+    return current_player_; }
+
+void GameEngine::MarkCellOccupied(size_t player_id) { 
+    // cout << "Occupied: " << player_id << endl;
+    ++num_occupied_cells_[player_id];
+}
+
+void GameEngine::MarkCellUnoccupied(size_t player_id) {
+    // cout << "Unoccupied: " << player_id << endl;
+    --num_occupied_cells_[player_id];
+}
+
+void GameEngine::TransferCell(size_t prev_player_id_, size_t curr_player_id) {
+    MarkCellOccupied(curr_player_id);
+    MarkCellUnoccupied(prev_player_id_);
 }
 
 void GameEngine::FinishCurrentTurn() {
@@ -31,15 +47,9 @@ void GameEngine::FinishCurrentTurn() {
         current_player_iter = active_player_ids_.begin();
     }
     current_player_ = *current_player_iter;
-
-    // TODO: Check if any players have been eliminated by the latest move
 }
 
 bool GameEngine::IsGameOver() { return false; }
 
 size_t GameEngine::GetWinningPlayerId() { return size_t(); }
-
-void GameEngine::SetHexGrid(HexGrid &hex_grid) {
-    hex_grid_ptr_ = &hex_grid;
-}
 }  // namespace Hexplosions

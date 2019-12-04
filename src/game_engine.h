@@ -4,8 +4,6 @@
 #include "game_settings.h"
 
 namespace Hexplosions {
-class HexGrid;
-
 /**
  * @class   GameEngine
  *
@@ -29,19 +27,23 @@ class GameEngine {
     size_t GetNumPlayers() const;
     size_t GetCurrentPlayerId() const;
 
+    void MarkCellOccupied(size_t player_id);
+    void MarkCellUnoccupied(size_t player_id);
+    void TransferCell(size_t prev_player_id_, size_t curr_player_id);
+
     void FinishCurrentTurn();
     
     bool IsGameOver();
     size_t GetWinningPlayerId();
-
-    void SetHexGrid(HexGrid &hex_grid);
-
   private:
     GameSettings settings_;
-    HexGrid *hex_grid_ptr_;
 
     vector<size_t> active_player_ids_; // Players who have no cells occupied are removed 
     vector<size_t>::iterator current_player_iter;
     size_t current_player_;
+
+    vector<size_t> num_occupied_cells_;
+
+    bool first_round_;
 };
 } // namespace Hexplosions
