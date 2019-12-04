@@ -180,6 +180,7 @@
     <PostBuildEvent />
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\game_engine.cpp" />
     <ClCompile Include="src\game_settings.cpp" />
     <ClCompile Include="src\introduction_display.cpp" />
     <ClCompile Include="src\main.cpp" />
@@ -199,6 +200,7 @@
     <ClCompile Include="..\..\..\..\..\..\Program Files\of_v0.10.1_vs2017_release\addons\ofxMSAInteractiveObject\src\ofxMSAInteractiveObject.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\game_engine.h" />
     <ClInclude Include="src\game_settings.h" />
     <ClInclude Include="src\introduction_display.h" />
     <ClInclude Include="src\ofApp.h" />
