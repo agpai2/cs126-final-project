@@ -39,8 +39,14 @@ class GameSettings {
     size_t num_players_;
 };
 
-const ofColor kPlayerColors[4] = { ofColor(255, 0, 0), ofColor(0, 255, 0),
-                                   ofColor(0, 0, 255), ofColor(255, 255, 255) };
+ofColor GetPlayerColor(size_t player_id);
+
+// Getting read access violation exception when using a const array instead of
+// GetPlayerColor() const ofColor kPlayerColors[4] = {ofColor(255, 0, 0),
+// ofColor(0, 255, 0),
+//                                      ofColor(0, 0, 255),
+//                                      ofColor(255, 255, 255)};
+//
 // This version does not work. TODO: Figure out why
 // const ofColor kPlayerColors[4] = { ofColor::red, ofColor::green,
 // ofColor::blue, ofColor::black };

@@ -14,4 +14,19 @@ size_t GameSettings::GetGridSize() const {
 size_t GameSettings::GetNumPlayers() const {
     return num_players_;
 }
+
+ofColor GetPlayerColor(size_t player_id) { 
+    switch (player_id) { 
+        case 0:
+            return ofColor::red;
+        case 1:
+            return ofColor::green;
+        case 2:
+            return ofColor::blue;
+        case 3:
+            return ofColor::black;
+        default:
+            return ofColor::white;
+    }
+}
 }  // namespace Hexplosions
