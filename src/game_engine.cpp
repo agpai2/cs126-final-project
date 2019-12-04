@@ -41,10 +41,20 @@ void GameEngine::TransferCell(size_t prev_player_id_, size_t curr_player_id) {
 }
 
 void GameEngine::FinishCurrentTurn() {
+    if (!first_round_) {
+        // Check if any players have been eliminated by the move (i.e. occupy 0 cells)
+        auto new_end_iter = std::remove_if(active_player_ids_.begin(), 
+            active_player_ids_.end(), 
+            [this](size_t player) { return num_occupied_cells_[player] == 0; });
+
+        active_player_ids_.erase(new_end_iter, active_player_ids_.end());
+    }
+
     ++current_player_iter;
     if (current_player_iter == active_player_ids_.end()) {
         // Wrap around, it is the first player's turn again
         current_player_iter = active_player_ids_.begin();
+        first_round_ = false;
     }
     current_player_ = *current_player_iter;
 }
