@@ -47,7 +47,11 @@ void GameEngine::FinishCurrentTurn() {
             active_player_ids_.end(), 
             [this](size_t player) { return num_occupied_cells_[player] == 0; });
 
-        active_player_ids_.erase(new_end_iter, active_player_ids_.end());
+        if (new_end_iter != active_player_ids_.end()) {
+            active_player_ids_.erase(new_end_iter, active_player_ids_.end());
+            current_player_iter = std::find(active_player_ids_.begin(), 
+                active_player_ids_.end(), current_player_);
+        }
     }
 
     ++current_player_iter;
@@ -59,7 +63,11 @@ void GameEngine::FinishCurrentTurn() {
     current_player_ = *current_player_iter;
 }
 
-bool GameEngine::IsGameOver() { return false; }
+bool GameEngine::IsGameOver() {
+    return active_player_ids_.size() == 1;
+}
 
-size_t GameEngine::GetWinningPlayerId() { return size_t(); }
+size_t GameEngine::GetWinningPlayerId() { 
+    return active_player_ids_.front();
+}
 }  // namespace Hexplosions
