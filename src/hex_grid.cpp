@@ -1,8 +1,6 @@
 #include "hex_grid.h"
 
 namespace Hexplosions {
-HexGrid::HexGrid() : HexGrid(ofVec3f(0, 0), GameEngine()) {}
-
 HexGrid::HexGrid(ofVec3f center, GameEngine &engine) : 
     center_(center), engine_(engine) {}
 

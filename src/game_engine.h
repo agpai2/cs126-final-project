@@ -20,7 +20,6 @@ namespace Hexplosions {
 
 class GameEngine {
   public:
-    GameEngine();
     explicit GameEngine(const GameSettings& settings);
     void setup();
 

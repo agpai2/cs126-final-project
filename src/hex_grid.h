@@ -20,7 +20,6 @@ namespace Hexplosions {
  */
 class HexGrid {
   public:
-    HexGrid();
     HexGrid(ofVec3f center, GameEngine &engine);
     const vector<HexCell>& GetCells() const;
 

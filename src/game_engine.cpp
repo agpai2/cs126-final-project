@@ -1,13 +1,10 @@
 #include "game_engine.h"
 
 namespace Hexplosions {
-GameEngine::GameEngine() : GameEngine(GameSettings()) {}
-
 GameEngine::GameEngine(const GameSettings &settings) :
     settings_(settings) {}
 
 void GameEngine::setup() {
-    cout << "SETUP" << endl;
     for (size_t i = 0; i < settings_.GetNumPlayers(); i++) {
         active_player_ids_.push_back(i);   
     }
