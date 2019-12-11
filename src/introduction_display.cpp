@@ -9,8 +9,8 @@ void IntroductionDisplay::setup() {
                                    &IntroductionDisplay::SelectMediumGrid);
     large_grid_param_.addListener(this, &IntroductionDisplay::SelectLargeGrid);
 
-    gui.add(num_players_param_.set("Number of Players", kMinimumPlayers,
-                                   kMinimumPlayers, kMaximumPlayers));
+    gui.add(num_players_param_.set("Number of Players", GameSettings::kMinimumPlayers,
+                                   GameSettings::kMinimumPlayers, GameSettings::kMaximumPlayers));
     gui.add(small_grid_param_.set("Small", true));
     gui.add(medium_grid_param_.set("Medium", false));
     gui.add(large_grid_param_.set("Large", false));

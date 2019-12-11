@@ -10,7 +10,7 @@ void EndgameDisplay::setup() {}
 void EndgameDisplay::update() {}
 
 void EndgameDisplay::draw() { 
-    ofSetColor(GetPlayerColor(winner_id_));
+    ofSetColor(GameSettings::GetPlayerColor(winner_id_));
     std::string win_message =
         "Game over.\nPlayer " + to_string(winner_id_ + 1) + " won!";
     ofDrawBitmapString(win_message, ofGetWindowWidth() / 2, ofGetWindowHeight() / 2);

@@ -4,7 +4,8 @@
 
 //========================================================================
 int main() {
-    ofSetupOpenGL(Hexplosions::kWindowWidth, Hexplosions::kWindowHeight,
+    ofSetupOpenGL(Hexplosions::GameSettings::kWindowWidth,
+                  Hexplosions::GameSettings::kWindowHeight,
                   OF_WINDOW);  // <-------- setup the GL context
 
     // this kicks off the running of my app

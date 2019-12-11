@@ -88,7 +88,7 @@ void HexCell::draw() {
     hexagon_outline.draw();
 
     if (is_occupied_) {
-        ofSetColor(GetPlayerColor(player_id_));
+        ofSetColor(GameSettings::GetPlayerColor(player_id_));
         ofDrawBitmapString(to_string(atoms_), center_);
     }
 }

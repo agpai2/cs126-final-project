@@ -54,6 +54,7 @@ class ofApp : public ofBaseApp {
 
     GameSettings settings_;
     GameEngine engine_ = GameEngine(settings_);
-    HexGrid hex_grid_ = HexGrid(ofVec3f(kWindowWidth / 2, kWindowHeight / 2), engine_);
+    HexGrid hex_grid_ = HexGrid(ofVec3f(GameSettings::kWindowWidth / 2, GameSettings::kWindowHeight / 2), 
+        engine_);
 };
 }  // namespace Hexplosions
