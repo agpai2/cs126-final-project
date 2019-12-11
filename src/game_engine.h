@@ -21,7 +21,8 @@ namespace Hexplosions {
 class GameEngine {
   public:
     GameEngine();
-    GameEngine(const GameSettings &settings);
+    explicit GameEngine(const GameSettings& settings);
+    void setup();
 
     size_t GetGridSize() const;
     size_t GetNumPlayers() const;
@@ -33,17 +34,17 @@ class GameEngine {
 
     void FinishCurrentTurn();
     
-    bool IsGameOver();
-    size_t GetWinningPlayerId();
+    bool IsGameOver() const;
+    size_t GetWinningPlayerId() const;
   private:
-    GameSettings settings_;
+    const GameSettings& settings_;
 
     vector<size_t> active_player_ids_; // Players who have no cells occupied are removed 
-    vector<size_t>::iterator current_player_iter;
+    vector<size_t>::iterator current_player_iter_;
     size_t current_player_;
 
     vector<size_t> num_occupied_cells_;
 
-    bool first_round_;
+    bool is_first_round_ = true;
 };
 } // namespace Hexplosions

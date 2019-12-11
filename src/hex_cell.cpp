@@ -1,8 +1,8 @@
 #include "hex_cell.h"
 
 namespace Hexplosions {
-HexCell::HexCell(ofVec3f center, GameEngine* engine_ptr)
-    : center_(center), engine_ptr_(engine_ptr) {
+HexCell::HexCell(ofVec3f center, GameEngine &engine)
+    : center_(center), engine_(engine) {
     float cumulative_angle = 0;
     vector<ofVec3f*> vertex_ptrs = {&right_vertex_,      &upper_right_vertex_,
                                     &upper_left_vertex_, &left_vertex_,
@@ -20,33 +20,33 @@ HexCell::HexCell(ofVec3f center, GameEngine* engine_ptr)
         kHexCellRadius, kHexCellRadius);
 }
 
-vector<ofVec3f> HexCell::GetVertices() {
+vector<ofVec3f> HexCell::GetVertices() const {
     return vector<ofVec3f>({right_vertex_, upper_right_vertex_,
                             upper_left_vertex_, left_vertex_,
                             lower_left_vertex_, lower_right_vertex_});
 }
 
-ofVec3f HexCell::GetCenter() { return center_; }
+ofVec3f HexCell::GetCenter() const { return center_; }
 
-ofVec3f HexCell::GetUpperRightVertex() { return upper_right_vertex_; }
+ofVec3f HexCell::GetUpperRightVertex() const { return upper_right_vertex_; }
 
-ofVec3f HexCell::GetLowerRightVertex() { return lower_right_vertex_; }
+ofVec3f HexCell::GetLowerRightVertex() const { return lower_right_vertex_; }
 
-ofVec3f HexCell::GetUpperLeftVertex() { return upper_left_vertex_; }
+ofVec3f HexCell::GetUpperLeftVertex() const { return upper_left_vertex_; }
 
-ofVec3f HexCell::GetLowerLeftVertex() { return lower_left_vertex_; }
+ofVec3f HexCell::GetLowerLeftVertex() const { return lower_left_vertex_; }
 
-ofVec3f HexCell::GetRightVertex() { return right_vertex_; }
+ofVec3f HexCell::GetRightVertex() const { return right_vertex_; }
 
-ofVec3f HexCell::GetLeftVertex() { return left_vertex_; }
+ofVec3f HexCell::GetLeftVertex() const { return left_vertex_; }
 
-size_t HexCell::GetAtoms() { return atoms_; }
+size_t HexCell::GetAtoms() const { return atoms_; }
 
 void HexCell::AddAtom(size_t curr_player_id) {
     if (is_occupied_ && curr_player_id != player_id_) {
-        engine_ptr_->TransferCell(player_id_, curr_player_id);
+        engine_.TransferCell(player_id_, curr_player_id);
     } else if (!is_occupied_) {
-        engine_ptr_->MarkCellOccupied(curr_player_id);
+        engine_.MarkCellOccupied(curr_player_id);
     }
 
     player_id_ = curr_player_id;
@@ -61,7 +61,7 @@ void HexCell::AddAtom(size_t curr_player_id) {
 void HexCell::ExplodeAtoms() {
     atoms_ = 0;
     is_occupied_ = false;
-    engine_ptr_->MarkCellUnoccupied(player_id_);
+    engine_.MarkCellUnoccupied(player_id_);
 
     for (HexCell* neighbor : neighbor_cells_) {
         neighbor->AddAtom(player_id_);
@@ -94,16 +94,16 @@ void HexCell::draw() {
 }
 
 void HexCell::onPress(int x, int y, int button) {
-    if (!is_occupied_ || engine_ptr_->GetCurrentPlayerId() == player_id_) {
-        player_id_ = engine_ptr_->GetCurrentPlayerId();
+    if (!is_occupied_ || engine_.GetCurrentPlayerId() == player_id_) {
+        player_id_ = engine_.GetCurrentPlayerId();
         AddAtom(player_id_);
-        engine_ptr_->FinishCurrentTurn();
+        engine_.FinishCurrentTurn();
     } else {
         // TODO: Throw exception to let player know their move is invalid
     }
 }
 
-vector<HexCell*>& HexCell::GetNeighbors() { return neighbor_cells_; }
+ const vector<HexCell*>& HexCell::GetNeighbors() const { return neighbor_cells_; }
 
 void HexCell::AddNeighbor(HexCell& neighbor) {
     neighbor_cells_.push_back(&neighbor);

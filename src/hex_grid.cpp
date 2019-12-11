@@ -1,26 +1,27 @@
 #include "hex_grid.h"
 
 namespace Hexplosions {
-HexGrid::HexGrid() : HexGrid(ofVec3f(0, 0), GameGridSize::SMALL, GameEngine()) {}
+HexGrid::HexGrid() : HexGrid(ofVec3f(0, 0), GameEngine()) {}
 
-HexGrid::HexGrid(ofVec3f center, size_t grid_size, GameEngine &engine) : 
-    center_(center), grid_size_(grid_size), engine_ptr_(&engine) {}
+HexGrid::HexGrid(ofVec3f center, GameEngine &engine) : 
+    center_(center), engine_(engine) {}
 
-vector<HexCell> HexGrid::GetCells() { 
+const vector<HexCell>& HexGrid::GetCells() const { 
     return cells_; 
 }
 
 void HexGrid::setup() {
+    grid_size_ = engine_.GetGridSize();
     vector<HexCell> middle_column = CreateGridMiddleColumn();
     deque<vector<HexCell>> left_half = CreateGridLeftHalf(middle_column);
     deque<vector<HexCell>> right_half = CreateGridRightHalf(middle_column);
-
+    
     left_half.pop_back();  // Prevent duplicate of middle column
     for (vector<HexCell>& column : left_half) {
-        cells_.insert(cells_.end(), column.begin(), column.end());
+        std::move(column.begin(), column.end(), std::back_inserter(cells_));
     }
     for (vector<HexCell>& column : right_half) {
-        cells_.insert(cells_.end(), column.begin(), column.end());
+        std::move(column.begin(), column.end(), std::back_inserter(cells_));
     }
 
     for (HexCell& cell : cells_) {
@@ -47,7 +48,7 @@ vector<HexCell> HexGrid::CreateGridMiddleColumn() const {
     vector<HexCell> middle_column;
     for (int i = 0; i < grid_size_; i++) {
         ofVec3f cell_center(center_.x, top_cell_center_y + kHexCellHeight * i);
-        middle_column.emplace_back(HexCell(cell_center, engine_ptr_));
+        middle_column.emplace_back(HexCell(cell_center, engine_));
     }
     return middle_column;
 }
@@ -61,7 +62,7 @@ deque<vector<HexCell>> HexGrid::CreateGridLeftHalf(
         for (HexCell& prev_col_cell : left_half.front()) {
             ofVec3f cell_center = prev_col_cell.GetLowerLeftVertex();
             cell_center.x -= kHexCellRadius;
-            new_column.emplace_back(HexCell(cell_center, engine_ptr_));
+            new_column.emplace_back(HexCell(cell_center, engine_));
         }
 
         // Each column has one fewer cell than the previous column
@@ -81,7 +82,7 @@ deque<vector<HexCell>> HexGrid::CreateGridRightHalf(
         for (HexCell& prev_col_cell : right_half.back()) {
             ofVec3f cell_center = prev_col_cell.GetLowerRightVertex();
             cell_center.x += kHexCellRadius;
-            new_column.emplace_back(HexCell(cell_center, engine_ptr_));
+            new_column.emplace_back(HexCell(cell_center, engine_));
         }
 
         // Each column has one fewer cell than the previous column

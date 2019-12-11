@@ -21,8 +21,8 @@ namespace Hexplosions {
 class HexGrid {
   public:
     HexGrid();
-    HexGrid(ofVec3f center, size_t grid_size, GameEngine &engine);
-    vector<HexCell> GetCells();
+    HexGrid(ofVec3f center, GameEngine &engine);
+    const vector<HexCell>& GetCells() const;
 
     void setup();
     void update();
@@ -33,7 +33,7 @@ class HexGrid {
     ofVec3f center_;
     vector<HexCell> cells_;
     size_t grid_size_;
-    GameEngine* engine_ptr_;
+    GameEngine& engine_;
 
     vector<HexCell> CreateGridMiddleColumn() const;
     deque<vector<HexCell>> CreateGridLeftHalf(vector<HexCell>& middle_column) const;

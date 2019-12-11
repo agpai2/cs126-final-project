@@ -29,7 +29,7 @@ constexpr float kHexCellAngleRad = kPi / 3.0;
  */
 class HexCell : public ofxMSAInteractiveObject {
    public:
-    HexCell(ofVec3f center, GameEngine* engine_ptr);
+    HexCell(ofVec3f center, GameEngine &engine);
 
     // Override methods from base class
     void setup();
@@ -39,20 +39,20 @@ class HexCell : public ofxMSAInteractiveObject {
     void onPress(int x, int y, int button);
 
     // Getters for the location of the hexagon on screen
-    vector<ofVec3f> GetVertices();
-    ofVec3f GetCenter();
-    ofVec3f GetUpperRightVertex();
-    ofVec3f GetLowerRightVertex();
-    ofVec3f GetUpperLeftVertex();
-    ofVec3f GetLowerLeftVertex();
-    ofVec3f GetRightVertex();
-    ofVec3f GetLeftVertex();
+    vector<ofVec3f> GetVertices() const;
+    ofVec3f GetCenter() const;
+    ofVec3f GetUpperRightVertex() const;
+    ofVec3f GetLowerRightVertex() const;
+    ofVec3f GetUpperLeftVertex() const;
+    ofVec3f GetLowerLeftVertex() const;
+    ofVec3f GetRightVertex() const;
+    ofVec3f GetLeftVertex() const;
 
-    size_t GetAtoms();
+    size_t GetAtoms() const;
     void AddAtom(size_t player_id);
     void ExplodeAtoms();
 
-    vector<HexCell*>& GetNeighbors();
+    const vector<HexCell*>& GetNeighbors() const;
     void AddNeighbor(HexCell& neighbor);
 
    private:
@@ -70,6 +70,6 @@ class HexCell : public ofxMSAInteractiveObject {
 
     bool is_occupied_ = false;
     size_t player_id_;
-    GameEngine* engine_ptr_;
+    GameEngine& engine_;
 };
 }  // namespace Hexplosions
