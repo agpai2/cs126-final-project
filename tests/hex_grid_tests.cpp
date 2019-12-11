@@ -1,10 +1,14 @@
 #include "catch.hpp"
 
+#include "game_engine.h"
+#include "game_settings.h"
 #include "hex_cell.h"
 #include "hex_grid.h"
 
 using Hexplosions::HexCell;
 using Hexplosions::HexGrid;
+using Hexplosions::GameSettings;
+using Hexplosions::GameEngine;
 
 TEST_CASE(
     "Test HexGrid constructor generates hexagonal cells in correct positions") {
@@ -17,12 +21,15 @@ TEST_CASE(
         {632, 384},    {632, 453.28}, {692, 349.36}, {692, 418.64},
         {752, 384}};
 
-    HexGrid grid_(ofVec3f(512, 384));
+    GameSettings settings;
+    GameEngine engine(settings);
+    engine.setup();
+    HexGrid grid_(ofVec3f(512, 384), engine);
     grid_.setup();
     REQUIRE(grid_.GetCells().size() == 25);
 
     int i = 0;
-    for (HexCell& cell : grid_.GetCells()) {
+    for (const HexCell& cell : grid_.GetCells()) {
         ofVec3f actual_center = cell.GetCenter();
         REQUIRE(actual_center.x ==
                 Approx(expected_cell_centers[i].x).epsilon(0.01));
