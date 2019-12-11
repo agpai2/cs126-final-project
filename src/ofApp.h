@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 
+#include "endgame_display.h"
 #include "game_engine.h"
 #include "hex_grid.h"
 #include "introduction_display.h"
@@ -49,7 +50,10 @@ class ofApp : public ofBaseApp {
     void SetupDisplayStateEnd();
 
     IntroductionDisplay intro_display_;
-    GameEngine engine_;
-    HexGrid hex_grid_;
+    EndgameDisplay end_display_;
+
+    GameSettings settings_;
+    GameEngine engine_ = GameEngine(settings_);
+    HexGrid hex_grid_ = HexGrid(ofVec3f(kWindowWidth / 2, kWindowHeight / 2), engine_);
 };
 }  // namespace Hexplosions

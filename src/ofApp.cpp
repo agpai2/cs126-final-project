@@ -8,7 +8,11 @@ void ofApp::setup() {
 }
 
 //--------------------------------------------------------------
-void ofApp::update() {}
+void ofApp::update() { 
+    if (display_state_ == GameDisplayState::GAME && engine_.IsGameOver()) {
+        SetupDisplayStateEnd();    
+    }
+}
 
 //--------------------------------------------------------------
 void ofApp::draw() {
@@ -20,6 +24,7 @@ void ofApp::draw() {
             hex_grid_.draw(); 
             break;
         case GameDisplayState::END:
+            end_display_.draw();
             break;
     }
 }
@@ -62,15 +67,18 @@ void ofApp::SetupDisplayStateIntroduction() {
 
 void ofApp::SetupDisplayStateGame() {
     display_state_ = GameDisplayState::GAME;
-    engine_ = GameEngine(intro_display_.GetSettings());
+    settings_ = intro_display_.GetSettings();
     intro_display_.exit();
-    
-    ofVec3f center(kWindowWidth / 2, kWindowHeight / 2, 0);
-    hex_grid_ = HexGrid(center, engine_.GetGridSize(), engine_);
+
+    engine_.setup();
     hex_grid_.setup();
 }
 
-void ofApp::SetupDisplayStateEnd() {}
+void ofApp::SetupDisplayStateEnd() {
+    display_state_ = GameDisplayState::END;
+    end_display_ = EndgameDisplay(engine_.GetWinningPlayerId());
+    end_display_.setup();
+}
 
 //--------------------------------------------------------------
 void ofApp::dragEvent(ofDragInfo dragInfo) {}
