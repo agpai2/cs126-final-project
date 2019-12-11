@@ -15,18 +15,18 @@ size_t GameSettings::GetNumPlayers() const {
     return num_players_;
 }
 
-ofColor GetPlayerColor(size_t player_id) { 
-    switch (player_id) { 
-        case 0:
-            return ofColor::red;
-        case 1:
-            return ofColor::green;
-        case 2:
-            return ofColor::blue;
-        case 3:
-            return ofColor::white;
-        default:
-            return ofColor::black;
+ofColor GameSettings::GetPlayerColor(size_t player_id) { 
+    // Note: static const member variables of non-trivial types can't be
+    // initialized in header files in C++11
+    // Following code may be updated once OpenFrameworks supports C++17
+    static const ofColor kPlayerColors[4] = {
+        ofColor::red, ofColor::green, ofColor::blue, ofColor::white
+    }; 
+
+    try {
+        return kPlayerColors[player_id];
+    } catch (std::exception e) {
+        return ofColor::black;
     }
 }
 }  // namespace Hexplosions

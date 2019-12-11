@@ -1,11 +1,9 @@
 #pragma once
 
+#include <vector>
 #include "ofMain.h"
 
 namespace Hexplosions {
-constexpr size_t kWindowWidth = 1280;
-constexpr size_t kWindowHeight = 900;
-
 /**
  * @enum    GameGridSize
  *
@@ -13,9 +11,6 @@ constexpr size_t kWindowHeight = 900;
  *
  */
 enum GameGridSize { SMALL = 5, MEDIUM = 7, LARGE = 9 };
-
-constexpr size_t kMinimumPlayers = 2;
-constexpr size_t kMaximumPlayers = 4;
 
 /**
  * @class   GameSettings
@@ -34,20 +29,15 @@ class GameSettings {
     size_t GetGridSize() const;
     size_t GetNumPlayers() const;
 
+    static constexpr size_t kMinimumPlayers = 2;
+    static constexpr size_t kMaximumPlayers = 4;
+
+    static constexpr size_t kWindowWidth = 1280;
+    static constexpr size_t kWindowHeight = 900;
+
+    static ofColor GetPlayerColor(size_t player_id);
    private:
     GameGridSize grid_size_;
     size_t num_players_;
 };
-
-ofColor GetPlayerColor(size_t player_id);
-
-// Getting read access violation exception when using a const array instead of
-// GetPlayerColor() const ofColor kPlayerColors[4] = {ofColor(255, 0, 0),
-// ofColor(0, 255, 0),
-//                                      ofColor(0, 0, 255),
-//                                      ofColor(255, 255, 255)};
-//
-// This version does not work. TODO: Figure out why
-// const ofColor kPlayerColors[4] = { ofColor::red, ofColor::green,
-// ofColor::blue, ofColor::black };
 }  // namespace Hexplosions
