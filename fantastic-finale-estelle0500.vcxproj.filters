@@ -7,12 +7,6 @@
     <ClCompile Include="src\main.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\hex_cell.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="src\hex_grid.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="src\main.cpp">
       <Filter>src</Filter>
     </ClCompile>
@@ -52,14 +46,35 @@
     <ClCompile Include="..\..\..\..\..\..\Program Files\of_v0.10.1_vs2017_release\addons\ofxMSAInteractiveObject\src\ofxMSAInteractiveObject.cpp">
       <Filter>addons\ofxMSAInteractiveObject\src</Filter>
     </ClCompile>
-    <ClCompile Include="src\introduction_display.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="src\game_settings.cpp">
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="src\game_engine.cpp">
       <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="tests\hex_cell_tests.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
+    <ClCompile Include="tests\hex_grid_tests.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
+    <ClCompile Include="tests\main.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
+    <ClCompile Include="src\displays\endgame_display.cpp">
+      <Filter>src\displays</Filter>
+    </ClCompile>
+    <ClCompile Include="src\displays\game_display.cpp">
+      <Filter>src\displays</Filter>
+    </ClCompile>
+    <ClCompile Include="src\displays\introduction_display.cpp">
+      <Filter>src\displays</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game_elements\hex_grid.cpp">
+      <Filter>src\game_elements</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game_elements\hex_cell.cpp">
+      <Filter>src\game_elements</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -81,15 +96,18 @@
     <Filter Include="addons\ofxMSAInteractiveObject\src">
       <UniqueIdentifier>{267164F9-41DE-EEA9-6F4A-21A9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\displays">
+      <UniqueIdentifier>{38f8de4a-c2f7-41f6-9ce9-fec010610dbb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\game_elements">
+      <UniqueIdentifier>{20d4f816-a249-4008-9942-6983d5f21f68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tests">
+      <UniqueIdentifier>{00a3a575-5679-40d4-971c-2432ac28a370}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\ofApp.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="src\hex_cell.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="src\hex_grid.h">
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\ofApp.h">
@@ -131,17 +149,37 @@
     <ClInclude Include="..\..\..\..\..\..\Program Files\of_v0.10.1_vs2017_release\addons\ofxMSAInteractiveObject\src\ofxMSAInteractiveObject.h">
       <Filter>addons\ofxMSAInteractiveObject\src</Filter>
     </ClInclude>
-    <ClInclude Include="src\introduction_display.h">
-      <Filter>src</Filter>
-    </ClInclude>
     <ClInclude Include="src\game_settings.h">
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\game_engine.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="tests\catch.hpp">
+      <Filter>tests</Filter>
+    </ClInclude>
+    <ClInclude Include="src\displays\endgame_display.h">
+      <Filter>src\displays</Filter>
+    </ClInclude>
+    <ClInclude Include="src\displays\game_display.h">
+      <Filter>src\displays</Filter>
+    </ClInclude>
+    <ClInclude Include="src\displays\introduction_display.h">
+      <Filter>src\displays</Filter>
+    </ClInclude>
+    <ClInclude Include="src\game_elements\hex_grid.h">
+      <Filter>src\game_elements</Filter>
+    </ClInclude>
+    <ClInclude Include="src\game_elements\hex_cell.h">
+      <Filter>src\game_elements</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="tests\tests.runsettings">
+      <Filter>tests</Filter>
+    </None>
   </ItemGroup>
 </Project>
