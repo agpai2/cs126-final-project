@@ -31,30 +31,39 @@ class ofApp : public ofBaseApp {
     void update();
     void draw();
 
-    void keyPressed(int key);
-    void keyReleased(int key);
-    void mouseMoved(int x, int y);
-    void mouseDragged(int x, int y, int button);
-    void mousePressed(int x, int y, int button);
-    void mouseReleased(int x, int y, int button);
-    void mouseEntered(int x, int y);
-    void mouseExited(int x, int y);
-    void windowResized(int w, int h);
-    void dragEvent(ofDragInfo dragInfo);
-    void gotMessage(ofMessage msg);
-
    private:
-    GameDisplayState display_state_;
+    /**
+     * @fn  void ofApp::SetupDisplayStateIntroduction();
+     *
+     * @brief   Sets up the introduction display which will be drawn on the next frame
+     *          onwards until the display state transitions to game display.
+     */
     void SetupDisplayStateIntroduction();
+
+    /**
+     * @fn  void ofApp::SetupDisplayStateGame();
+     *
+     * @brief   Sets up the game display which will be drawn on the next frame
+     *          onwards until the display state transitions to endgame display.
+     */
     void SetupDisplayStateGame();
+
+    /**
+     * @fn  void ofApp::SetupDisplayStateEnd();
+     *
+     * @brief   Sets up the endgame display which will be drawn on the next frame
+     *          onwards until the user closes the app.
+     */
     void SetupDisplayStateEnd();
 
+    GameDisplayState display_state_;
     IntroductionDisplay intro_display_;
     EndgameDisplay end_display_;
 
     GameSettings settings_;
     GameEngine engine_ = GameEngine(settings_);
-    HexGrid hex_grid_ = HexGrid(ofVec3f(GameSettings::kWindowWidth / 2, GameSettings::kWindowHeight / 2), 
+    HexGrid hex_grid_ = HexGrid(
+        ofVec3f(GameSettings::kWindowWidth / 2, GameSettings::kWindowHeight / 2), 
         engine_);
 };
 }  // namespace Hexplosions

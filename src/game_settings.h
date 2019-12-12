@@ -21,7 +21,6 @@ enum GameGridSize { SMALL = 5, MEDIUM = 7, LARGE = 9 };
  * @author  Estelle Lee
  * @date    1/12/2019
  */
-
 class GameSettings {
    public:
     GameSettings();

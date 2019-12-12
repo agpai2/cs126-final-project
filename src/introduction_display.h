@@ -26,8 +26,37 @@ class IntroductionDisplay {
     GameSettings GetSettings();
 
   private:
+    /**
+     * @fn  void IntroductionDisplay::SelectSmallGrid(bool &is_small_grid);
+     *
+     * @brief   Event listener that is triggered when user clicks on the small 
+     *          grid button
+     *          Sets grid_size_param_ to SMALL
+     *
+     * @param [in,out]  is_small_grid   True if small grid button is checked
+     */
     void SelectSmallGrid(bool &is_small_grid);
+
+    /**
+     * @fn  void IntroductionDisplay::SelectMediumGrid(bool &is_medium_grid);
+     *
+     * @brief   Event listener that is triggered when user clicks on the medium
+     *          grid button
+     *          Sets grid_size_param_ to MEDIUM
+     *
+     * @param [in,out]  is_medium_grid   True if medium grid button is checked
+     */
     void SelectMediumGrid(bool &is_medium_grid);
+
+    /**
+     * @fn  void IntroductionDisplay::SelectLargeGrid(bool &is_large_grid);
+     *
+     * @brief   Event listener that is triggered when user clicks on the large
+     *          grid button
+     *          Sets grid_size_param_ to LARGE
+     *
+     * @param [in,out]  is_large_grid   True if large grid button is checked
+     */
     void SelectLargeGrid(bool &is_large_grid);
 
     ofParameter<size_t> num_players_param_;

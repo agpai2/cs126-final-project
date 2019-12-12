@@ -49,10 +49,37 @@ class HexCell : public ofxMSAInteractiveObject {
     ofVec3f GetLeftVertex() const;
 
     size_t GetAtoms() const;
+
+    /**
+     * @fn  void HexCell::AddAtom(size_t player_id);
+     *
+     * @brief   Increments the number of atoms in the cell
+     * @details Increments the number of atoms in the cell
+     *          then checks if the number of atoms reaches critical number.
+     *          Does nothing if the player who tries to add atom doesn't match 
+     *          the player who is currently occupying the cell.
+     *          
+     * @param   player_id   Identifier for the player.
+     */
     void AddAtom(size_t player_id);
+
+    /**
+     * @fn  void HexCell::ExplodeAtoms();
+     *
+     * @brief   Removes all the atoms from this cell 
+     *          and distributes one atom to each of its neighbor cells.
+     */
     void ExplodeAtoms();
 
     const vector<HexCell*>& GetNeighbors() const;
+
+    /**
+     * @fn  void HexCell::AddNeighbor(HexCell& neighbor);
+     *
+     * @brief   Adds a neighbor cell
+     *
+     * @param [in,out]  neighbor    The neighbor cell.
+     */
     void AddNeighbor(HexCell& neighbor);
 
    private:
@@ -66,6 +93,8 @@ class HexCell : public ofxMSAInteractiveObject {
     ofVec3f lower_right_vertex_;
 
     size_t atoms_ = 0;
+
+    /** @brief   Cells that share an edge/vertex with this cell in the grid */
     vector<HexCell*> neighbor_cells_;
 
     bool is_occupied_ = false;
