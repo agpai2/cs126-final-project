@@ -2,10 +2,10 @@
 
 #include "ofMain.h"
 
-#include "endgame_display.h"
+#include "displays/endgame_display.h"
 #include "game_engine.h"
-#include "hex_grid.h"
-#include "introduction_display.h"
+#include "game_elements/hex_grid.h"
+#include "displays/introduction_display.h"
 
 namespace Hexplosions {
 

@@ -1,7 +1,7 @@
 #include "catch.hpp"
 #include "game_settings.h"
 #include "game_engine.h"
-#include "hex_cell.h"
+#include "game_elements/hex_cell.h"
 
 using Hexplosions::GameEngine;
 using Hexplosions::GameSettings;

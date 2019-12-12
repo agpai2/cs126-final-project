@@ -2,8 +2,8 @@
 
 #include "game_engine.h"
 #include "game_settings.h"
-#include "hex_cell.h"
-#include "hex_grid.h"
+#include "game_elements/hex_cell.h"
+#include "game_elements/hex_grid.h"
 
 using Hexplosions::HexCell;
 using Hexplosions::HexGrid;
