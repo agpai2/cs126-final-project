@@ -19,11 +19,14 @@
     - Calculated player which has the next turn (may not be in order due to eliminations)
 - Eliminated players when they occupy 0 cells
 
+### 12/11
+- Documented classes and methods (except getters, which I think are self-explanatory)
+- Added README
+
 # Issues
 See Github Issues. 
 
 # Remaining work
-- Exit game when only 1 player remains, show an endgame screen with the winner
 - Display information on game screen:
     - Which players are still in the game
     - Whose turn it is
